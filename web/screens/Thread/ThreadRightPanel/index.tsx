@@ -13,6 +13,7 @@ import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 
 import EngineSetting from '@/containers/EngineSetting'
 import ModelDropdown from '@/containers/ModelDropdown'
+import AssistantDropdown from '@/containers/AssistantDropdown'
 
 import ModelSetting from '@/containers/ModelSetting'
 import RightPanelContainer from '@/containers/RightPanelContainer'
@@ -197,11 +198,21 @@ const ThreadRightPanel = () => {
           <div className="flex flex-col space-y-4 p-4">
             <div>
               <label
+                id="assistant-name"
+                className="mb-2 w-full inline-block font-bold"
+              >
+                Assistant Name
+              </label>
+              <label className="mb-2 w-full inline-block">
+                {activeThread?.assistants[0].assistant_name}
+              </label>
+              <label
                 id="assistant-instructions"
                 className="mb-2 inline-block font-bold"
               >
                 Instructions
               </label>
+              <AssistantDropdown />
               <TextArea
                 id="assistant-instructions"
                 placeholder="Eg. You are a helpful assistant."
